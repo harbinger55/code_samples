@@ -3,9 +3,10 @@
 import board
 
 boardPositions = {'1':'1','2':'2','3':'3','4':'4','5':'5','6':'6','7':'7','8':'8','9':'9'}
+totalPositions = 9
 victoryAchieved = False
 player = "X"
-while not victoryAchieved:
+while not victoryAchieved and totalPositions > 0:
   board.printBoard(boardPositions) # Show the player the current board
   positionAvailable = True
   while positionAvailable:
@@ -14,6 +15,7 @@ while not victoryAchieved:
       print "That position is occupied please select another"
     else: #If it isnt taken assign it
       boardPositions[positionToOccupy] = player # Set that position to the players mark
+      totalPositions = totalPositions - 1
 
 	# cycle thru all the possible winning combos and le the user know if they win
       if boardPositions['1'] == player and boardPositions['2'] == player and boardPositions['3'] == player:
@@ -61,6 +63,8 @@ while not victoryAchieved:
         print "Congratulations player %s Wins!" % player
         victoryAchieved = True
         break
+      elif totalPositions <= 0:
+        print "The Game is a tie, No winner today!"
 
       if player == 'X': #Set the player for the next turn
         player = 'O'
