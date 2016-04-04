@@ -1,4 +1,5 @@
 #!/usr/bin/python
 import sorters
 
-sorters.bubbleSort([1,2,3,4,])
+bubble = sorters.bubbleSort([1,5,2,3,4,])
+print bubble
