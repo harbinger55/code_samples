@@ -1,5 +1,5 @@
 #!/usr/bin/python
 import sorters
 
-bubble = sorters.bubbleSort([1,5,2,3,4,])
+bubble = sorters.bubbleSort(["banana","orange","apple","Grape","zucchini","mango"])
 print bubble
