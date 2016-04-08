@@ -6,10 +6,13 @@ def compareSorts(sort_list):
 
   if btime < itime and btime < stime:
    print "Bubble Sort was the fastest with a time of %f seconds (insertion sort: %f, selection sort: %f)" % (btime,itime,stime)
+   print blist
   elif itime < btime and itime < stime:
    print "Insertion Sort was the fastest with a time of %f seconds (bubble sort: %f, selection sort: %f)" % (itime,btime,stime)
+   print ilist
   elif stime < btime and stime < itime:
    print "Selection Sort was the fastest with a time of %f seconds (bubble sort: %f, insertion sort: %f)" % (stime,btime,itime)
+   print slist
   else:
    print "There is no winner today, science has failed us all (bubble sort: %f,insertion sort: %f, selection sort: %f)" % (btime,itime,stime)
 
