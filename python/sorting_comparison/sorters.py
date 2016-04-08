@@ -1,5 +1,21 @@
+import time
+def compareSorts(sort_list):
+  (btime,blist) = bubbleSort(sort_list)
+  (itime,ilist) = insertionSort(sort_list)
+  (stime,slist) = selectionSort(sort_list)
+
+  if btime < itime and btime < stime:
+   print "Bubble Sort was the fastest with a time of %f seconds (insertion sort: %f, selection sort: %f)" % (btime,itime,stime)
+  elif itime < btime and itime < stime:
+   print "Insertion Sort was the fastest with a time of %f seconds (bubble sort: %f, selection sort: %f)" % (itime,btime,stime)
+  elif stime < btime and stime < itime:
+   print "Selection Sort was the fastest with a time of %f seconds (bubble sort: %f, insertion sort: %f)" % (stime,btime,itime)
+  else:
+   print "There is no winner today, science has failed us all (bubble sort: %f,insertion sort: %f, selection sort: %f)" % (btime,itime,stime)
+
 # Bubble sort
 def bubbleSort(sort_list):
+  startTime = time.time() # Get the start time
   # set the condition to exit the while loop to false
   sortComplete = False
 
@@ -23,10 +39,13 @@ def bubbleSort(sort_list):
      # if we didnt so a sort set sortComplete to True, we are donme here
       else:
         sortComplete = True
+  endTime = time.time() - startTime #Get the time in seconds it took to run
 # return the sorted list
-  return(sort_list)
+  return(endTime,sort_list)
 
+#insertion sort
 def insertionSort(sort_list):
+  startTime = time.time() # Get the start time
   returnList = [] # Initialize the return list
   for item in sort_list: # start the loop of the orginal list
     if not returnList: # If the list is empty add the current item to start the list
@@ -41,11 +60,13 @@ def insertionSort(sort_list):
         elif item >= new_item and index + 1 == len(returnList):
           returnList.append(item)
           break
+  endTime = time.time() - startTime #Get the time in seconds it took to run
   #return the sorted list to the caller
-  return(returnList )
+  return(endTime,returnList)
     
-
+#selection sort
 def selectionSort(sort_list):
+  startTime = time.time() # Get the start time
   indexCounter = len(sort_list) - 1 # Get the list length, minus 1 so it starts at 0
 
   while indexCounter >= 0: #Do while the counter is less than or equal to 0
@@ -57,4 +78,5 @@ def selectionSort(sort_list):
     sort_list[sort_list.index(highestValue)] = lastValue # Replace the location in the list corosponding to hightestVale with lastValue
     sort_list[indexCounter] = highestValue #make the highest indice in the current slice equal highest value
     indexCounter = indexCounter - 1 # decremnt the indexCounter
-  return sort_list # return the sorted_list
+  endTime = time.time() - startTime #Get the time in seconds it took to run
+  return(endTime,sort_list) # return the sorted_list
