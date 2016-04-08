@@ -44,3 +44,17 @@ def insertionSort(sort_list):
   #return the sorted list to the caller
   return(returnList )
     
+
+def selectionSort(sort_list):
+  indexCounter = len(sort_list) - 1 # Get the list length, minus 1 so it starts at 0
+
+  while indexCounter >= 0: #Do while the counter is less than or equal to 0
+    lastValue = sort_list[indexCounter] # store the value of the list at location indexCounter in a variable
+    if indexCounter > 0: # Only do this if the index number is greater than 0, max gets mad if there is only one value to compare
+      highestValue = max(sort_list[:indexCounter]) #et highestValue to the value of the maximum in the sort_list upto indexCounter
+    else:
+      highestValue = sort_list[0] # If the index slice it at 0 assign hightestValue to that
+    sort_list[sort_list.index(highestValue)] = lastValue # Replace the location in the list corosponding to hightestVale with lastValue
+    sort_list[indexCounter] = highestValue #make the highest indice in the current slice equal highest value
+    indexCounter = indexCounter - 1 # decremnt the indexCounter
+  return sort_list # return the sorted_list
